@@ -9,7 +9,7 @@ env:
   - secure: kG879PJFJ0rucnmjLLykst2VEAppkCG2lnqGQ0P/N4DJKMca2MXr0YpP8NHhFWvCpUWtfT8h5wE6ky5ANbNs8eYC0pbeWifbh8sSabmjQIW/Fco1aD8iS0IFM64V5L3yMhECfhcsi2btHwPuKx94bNfNjGHr0e7aWT4J9riC1bze+DvQ45St+xxDj8gMvuR4yjTjdzj5IlXcdtzOViBwWBMh9XRCP0ifPJO6a2OihbL16Us6ROqcMFXUtfI/PiLxqE9sENSZqr7iXDJLnNfjeapWS/yTDCdD5HydfAIrSFYHMgB3rUksUvwj361D6KLb+6ZVwW6Aecugieo4NpTYdwgaK/sYnl10NkEFuW+/LUFeWxaGYSBVRwGZQWdikIQsB64tu8jgHqIGQidwaFMkE1WCyE8EmzW75ZyPs4xDckokG+RiL9OHqHVP53f9XMdDMU7DN2EC67H0rdJKCwrAChCy6a1Y2j3O2rea+aVSEuMsMqX9BJViozyx6tL+D0px7wFIYVFfPdMeWW4VU2117KBGrKcErT9p8mauotSOR3hHpJUKvCUFBmsBVvCSzv274b6+sULWAC2nJX9I6ft1Fg6Ir7kZ844WOGwrmArRAiDGfMsSePsP3L1iRestbzviBJPDQG0ugd8nIWQRts4jELfk6FfTkneG0yUlij2UYR8=
 before_install:
 - openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv
-  -in assets/server.key -out assets/server.key.enc -d
+  -in assets/server.key.enc -out assets/server.key -d
 - export SFDX_AUTOUPDATE_DISABLE=false
 - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 - export SFDX_DOMAIN_RETRY=300
@@ -21,7 +21,8 @@ before_install:
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx --version
 - sfdx plugins --core
-- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg
+- sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key
+  --username $USERNAME --setdefaultdevhubusername -a HubOrg
 script:
 - sfdx force:org:create -v HubOrg -s -f config/project-scratch-def.json -a ciorg --wait
   3
