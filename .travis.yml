@@ -7,8 +7,7 @@ env:
   global:
   - secure: dhV1xwSYyFu1v8V3VwZc4GjKrAv3HGihSU134hFealS+o5yP23df1Tf6DkhpPxJCy1kklF1OBRjGKSb9zjYWppVAt5koDOz2uGUW9g+x1NjheAN61B9su5B12hFdMcjCcTtmWkTx6Uuojo/yXGxkVRobIq6N8Osae+h2g2et039NHR4t7pqEvHZXZbf+ZQ27hWVSc4AfW5Nom5jVOkhVkD+q6WITNbEKkWKVh2XyagrMojJRVEw07/K6wY4m29rIeGDCU/Zl5SXwd56jkumVEN6X40R09GXZhqn/GNWD2OfowaeRz7ro8H7putxcEFf8/d+Hrp8e53Yya8ZXTrc+7Rd0+Pf0by0++BmBYULrQlIrZQUF08V+MboSNy8NQm8HfLJzdQhndxhNTYqOUjYf7nu5hg5hsIB/Ho2YALcGXZRM8mmRvxU5lGX+WfPcxpJTTSbu9sSUQfUobb7PhNZ6Em/7J+WvFZo14ctY/CNW2NDnNu5lJ8BwjYGRo7aA4ikca04hmveJfpNmeothIP/0F6spuVIN2cmdySlrbhYU2KFxlilnrTruilQGgzgF7qtGs014aPtNuX5Hdpc/ld/GFq6oND0iw/QJdPH3kZ0p4iFXzZrb/abFi2aKT4dAmBECPY0VrzgnYi5xAz2FpKq9MVEpxLAicUUDPTuXGUzp4ow=
 before_install:
-- openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv
-  -in assets/server.key.enc -out assets/server.key -d
+- openssl aes-256-cbc -K $encrypted_79a2f6093848_key -iv $encrypted_79a2f6093848_iv -in assets/server.key.enc -out assets/server.key -d
 - export SFDX_AUTOUPDATE_DISABLE=false
 - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 - export SFDX_DOMAIN_RETRY=300
